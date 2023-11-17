@@ -1,0 +1,56 @@
+<div class="container login-page">
+  <form class="login-page-form" (ngSubmit)="handleSubmit($event)">
+    <div class="login-page-form-title">
+      SignIn
+    </div>
+    <div class="form-group">
+      <label for="login">Login</label>
+      <input type="text"
+             class="form-control"
+             id="login"
+             required = "required"
+             name="login"
+             [(ngModel)]="loginDate.login"
+             placeholder="Enter login...">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your login and password with anyone
+        else.</small>
+    </div>
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input type="password"
+             class="form-control"
+             id="loginPassword"
+             required = 'true'
+             name="password"
+             [(ngModel)]="loginDate.password"
+             placeholder="Password..."
+      >
+    </div>
+    <div class="form-group">
+      <label for="repeatPassword">Repeat password</label>
+      <input type="password"
+             class="form-control"
+             id="repeatPassword"
+             required
+             name="repeatPassword"
+             [(ngModel)]="loginDate.checkPassword"
+             placeholder="Repeat your password..."
+      >
+    </div>
+
+    <div *ngIf="signStatus.attempt && signStatus.status"
+         class="login-page-form-error alert-success green">
+      You have successfully signed in! Redirecting...
+    </div>
+    <div *ngIf="signStatus.attempt && !signStatus.status"
+         class="login-page-form-error alert-danger red">
+      Password mismatch. Try entering again (
+    </div>
+
+    <button type="submit" class="btn btn-light">Submit</button>
+    <div class="login-page-form-create">
+      Have an account, <a routerLink="/login">Login</a> !
+    </div>
+  </form>
+</div>
+

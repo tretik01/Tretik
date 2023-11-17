@@ -1,0 +1,13 @@
+
+
+
+<!--<p *ngIf="loading" class="text-center text-lg ">Loading...</p>-->
+<div *ngIf="productService.products" class="container news_page">
+  <app-product
+    *ngFor="let item of productService.products "
+    [product]="item">
+  </app-product>
+</div>
+
+
+

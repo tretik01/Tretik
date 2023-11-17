@@ -1,0 +1,23 @@
+<div class="product-card border ">
+  <div style="max-height: 200px">
+    <img [src]="product.image" class="w-1/6 rounded" alt="">
+  </div>
+  <h2>{{product.title}}</h2>
+  <p>Price: <span class="font-bold">{{product.price | currency}}</span></p>
+  <div class="flex justify-center gap-1.5 ">
+    <button
+      class="border py-1 px-4 rounded bg-yellow-400"
+      (click)="detail = !detail"
+      [ngClass]="{
+      'bg-yellow-400': !detail,
+      'bg-blue-400': detail
+    }"
+    > {{detail ? "Hide" : "Show"}} detail
+    </button>
+  </div>
+
+  <div *ngIf="detail">
+    <p>{{product.description}}</p>
+    <p>Rate: <span [ngStyle]="{fontWeight:'bold'}"> {{product.rating.rate | number: '2.2'}}</span></p>
+  </div>
+</div>

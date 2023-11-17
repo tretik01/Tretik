@@ -1,0 +1,43 @@
+<div class="container login-page">
+  <form class="login-page-form" (ngSubmit)="handleSubmit($event)" >
+    <div class="login-page-form-title" >
+      LogIn
+    </div>
+    <div class="form-group">
+      <label for="login">Login</label>
+      <input type="text"
+             class="form-control"
+             id="login"
+             required
+             name="login"
+             [(ngModel)]="loginDate.login"
+             placeholder="Enter login">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your login and password with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input type="password"
+             class="form-control"
+             id="loginPassword"
+             required
+             name="password"
+             [(ngModel)]="loginDate.password"
+             placeholder="Password"
+      >
+    </div>
+
+    <div *ngIf="loginStatus.attempt && loginStatus.status"
+      class="login-page-form-error alert-success green">
+      You have successfully logged in! Redirecting...
+    </div>
+    <div *ngIf="loginStatus.attempt && !loginStatus.status"
+      class="login-page-form-error alert-danger red">
+      Password or data is not correct(
+    </div>
+
+    <button type="submit" class="btn btn-light">Submit</button>
+    <div class="login-page-form-create">
+      Don't have an account, create one <a routerLink="/sign" >here</a>
+    </div>
+  </form>
+</div>
